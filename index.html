@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fruit Suggestion</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>What Fruit Should You Eat?</h1>
+        <p id="season"></p>
+        <div id="fruit-suggestions">
+            <button onclick="getFruitSuggestion()">Get Fruit Suggestion</button>
+            <p id="fruits"></p>
+        </div>
+    </div>
+
+    <script>
+        // Function to get fruit suggestions based on the season
+        function getFruitSuggestion() {
+            // Get current month
+            const currentMonth = new Date().getMonth() + 1; // Months are 0-indexed
+            let season, fruits;
+
+            // Determine the season and fruits based on month
+            if (currentMonth == 12 || currentMonth == 1 || currentMonth == 2) {
+                season = "Winter";
+                fruits = ['Citrus', 'Pomegranate', 'Kiwi', 'Apple'];
+            } else if (currentMonth >= 3 && currentMonth <= 5) {
+                season = "Spring";
+                fruits = ['Strawberries', 'Apricots', 'Mangoes', 'Cherries'];
+            } else if (currentMonth >= 6 && currentMonth <= 8) {
+                season = "Summer";
+                fruits = ['Watermelon', 'Peaches', 'Berries', 'Plums'];
+            } else {
+                season = "Fall";
+                fruits = ['Apples', 'Pears', 'Grapes', 'Figs'];
+            }
+
+            // Display the season and fruit suggestions
+            document.getElementById("season").innerText = `It's ${season}!`;
+            document.getElementById("fruits").innerText = `You should eat: ${fruits.join(', ')}.`;
+        }
+    </script>
+</body>
+</html>
